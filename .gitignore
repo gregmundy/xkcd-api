@@ -4,3 +4,6 @@
 # python artifacts
 **/*.py[abc]
 **/__pycache__
+
+# pytest artifcats
+**/.pytest_cache
