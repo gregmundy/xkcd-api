@@ -13,12 +13,14 @@ class TestAPI:
 
     """
 
-    def test_fetch_latest(self):
+    def test_fetch_latest(self, client):
         """Test the ability to fetch the latest XCKD comic."""
 
-        pass
+        resp = client.simulate_get('/')
+        print(resp.json)
 
-    def test_fetch_specific_comic(self):
+    def test_fetch_specific_comic(self, client):
         """Test the ability to fetch a specific XCD comic by its identifier."""
 
-        pass
+        resp = client.simulate_get('/1')
+        print(resp.json)
