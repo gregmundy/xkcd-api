@@ -6,6 +6,7 @@ Falcon resource class for implementing XKCD API.
 
 import os
 import json
+import falcon
 import requests
 
 
@@ -24,10 +25,11 @@ class XKCDResource(object):
         """
 
         xkcd_resp = requests.get(url)
-        resp.status_code = xkcd_resp.status_code
-        if resp.status_code == 200:
+        if xkcd_resp.status_code == 200:
+            resp.status = falcon.HTTP_200
             resp.body = json.dumps(xkcd_resp.json(), ensure_ascii=False)
         else:
+            resp.status = falcon.HTTP_404
             resp.body = json.dumps(
                 {'message': error_message}, ensure_ascii=False)
 
